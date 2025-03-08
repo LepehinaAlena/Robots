@@ -54,8 +54,8 @@ public class MainApplicationFrame extends JFrame {
         Object[] options = {"Да", "Нет"};
         int response = JOptionPane.showOptionDialog(
                 null,
-                "Закрыть приложение?",
-                "Подтверждение действия",
+                "Вы подтверждаете выход?",
+                "Подтверждение выхода",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
