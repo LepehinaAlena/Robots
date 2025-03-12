@@ -63,7 +63,7 @@ public class MainApplicationFrame extends JFrame {
                 options[0]
         );
         if (response == JOptionPane.YES_OPTION) {
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            System.exit(0);
         }
     }
 
