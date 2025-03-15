@@ -10,6 +10,8 @@ import log.Logger;
 public class MainApplicationFrame extends JFrame {
     private final JDesktopPane desktopPane = new JDesktopPane();
 
+    private final WindowStateManager windowStateManager = new WindowStateManager();
+
     public MainApplicationFrame() {
         int inset = 50;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -33,6 +35,10 @@ public class MainApplicationFrame extends JFrame {
                 addConfirmExit();
             }
         });
+
+        // Восстановление состояния окон при запуске
+        restoreWindowState(logWindow, "logWindow");
+        restoreWindowState(gameWindow, "gameWindow");
     }
 
     protected LogWindow createLogWindow() {
@@ -63,9 +69,26 @@ public class MainApplicationFrame extends JFrame {
                 options[0]
         );
         if (response == JOptionPane.YES_OPTION) {
+            saveWindowState();
             System.exit(0);
         }
     }
+
+    private void saveWindowState() {
+        for (JInternalFrame frame : desktopPane.getAllFrames()) {
+            if (frame instanceof LogWindow) {
+                windowStateManager.saveWindowState(frame, "logWindow");
+            } else if (frame instanceof GameWindow) {
+                windowStateManager.saveWindowState(frame, "gameWindow");
+            }
+        }
+    }
+
+
+    private void restoreWindowState(JInternalFrame frame, String windowId) {
+        windowStateManager.loadWindowState(frame, windowId);
+    }
+
 
     public void setLookAndFeel(String className) {
         try {
