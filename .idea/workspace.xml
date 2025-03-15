@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="Initial commit" />
+    <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/CreateMenuBar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/LogWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/MainApplicationFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/MainApplicationFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/RobotsProgram.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogChangeListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogEntry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogLevel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogWindowSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Robots/tests/MainApplicationFrameTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +46,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="first_task" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,11 +86,13 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "second__task",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/RBT/Desktop/OOP/2 курс",
+    "last_opened_file_path": "C:/Users/RBT/Desktop/Robots",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "File.Encoding"
   }
 }]]></component>
   <component name="RunManager" selected="Application.RobotsProgram">
