@@ -5,26 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/src/gui/StatefulWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_03_2025_19_14_[Changes]1/MainApplicationFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_03_2025_19_14_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_03_2025_19_14__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/CreateMenuBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameVisualizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/GameWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/LogWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/MainApplicationFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/MainApplicationFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/gui/RobotsProgram.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogChangeListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/LogWindowSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/log/Logger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Robots/tests/MainApplicationFrameTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/WindowStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +74,7 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "second__task",
+    "git-widget-placeholder": "#7 on second__task",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/RBT/Desktop/Robots",
     "project.structure.last.edited": "Modules",
@@ -215,8 +203,27 @@
       <option name="project" value="LOCAL" />
       <updated>1741439845206</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1742053686611</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742053686611</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />

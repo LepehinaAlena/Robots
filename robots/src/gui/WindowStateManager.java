@@ -1,64 +1,56 @@
 package gui;
 
-import java.beans.PropertyVetoException;
 import java.io.*;
-import java.util.Properties;
-import javax.swing.JInternalFrame;
+import java.nio.file.*;
+import java.util.*;
 
 public class WindowStateManager {
-    private static final String CONFIG_FILE = "window_state.properties";
-    private static final String PATH = System.getProperty("user.home");
+    private static final String STATE_FILE = System.getProperty("user.home") + "/.window_states.properties";
+    private final Properties states = new Properties();
 
+    public WindowStateManager() {
+        loadStatesFromFile();
+    }
 
-    public void saveWindowState(JInternalFrame frame, String windowId) {
-        Properties properties = new Properties();
-
-        try (InputStream input = new FileInputStream(PATH + "\\" + CONFIG_FILE)) {
-            properties.load(input);
-        } catch (IOException e) {
-        }
-
-        properties.setProperty(windowId + ".x", Integer.toString(frame.getX()));
-        properties.setProperty(windowId + ".y", Integer.toString(frame.getY()));
-        properties.setProperty(windowId + ".width", Integer.toString(frame.getWidth()));
-        properties.setProperty(windowId + ".height", Integer.toString(frame.getHeight()));
-        properties.setProperty(windowId + ".icon", Boolean.toString(frame.isIcon()));
-
-
-        try (OutputStream output = new FileOutputStream(PATH + "\\" + CONFIG_FILE)) {
-            properties.store(output, "Window State");
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void saveWindowState(StatefulWindow window) {
+        if (window.isWindowVisible()) {
+            Map<String, String> state = window.getWindowState();
+            state.forEach((key, value) ->
+                    states.setProperty(window.getWindowId() + "." + key, value));
+            saveStatesToFile();
         }
     }
 
-    public void loadWindowState(JInternalFrame frame, String windowId) {
-        Properties properties = new Properties();
-        try (InputStream input = new FileInputStream(PATH + "\\" + CONFIG_FILE)) {
-            properties.load(input);
+    public void loadWindowState(StatefulWindow window) {
+        Map<String, String> state = new HashMap<>();
+        String prefix = window.getWindowId() + ".";
 
-            if (properties.containsKey(windowId + ".x")) {
-                int x = Integer.parseInt(properties.getProperty(windowId + ".x"));
-                int y = Integer.parseInt(properties.getProperty(windowId + ".y"));
-                int width = Integer.parseInt(properties.getProperty(windowId + ".width"));
-                int height = Integer.parseInt(properties.getProperty(windowId + ".height"));
+        states.stringPropertyNames().stream()
+                .filter(key -> key.startsWith(prefix))
+                .forEach(key ->
+                        state.put(key.substring(prefix.length()), states.getProperty(key)));
 
-                frame.setLocation(x, y);
-                frame.setSize(width, height);
+        if (!state.isEmpty()) {
+            window.setWindowState(state);
+        }
+    }
 
-                boolean isIcon = Boolean.parseBoolean(properties.getProperty(windowId + ".icon", "false"));
-                if (isIcon) {
-                    try {
-                        frame.setIcon(true);
-                    } catch (PropertyVetoException e) {
-                        e.printStackTrace();
-                    }
-                }
-                frame.setLocation(x, y);
-                frame.setSize(width, height);
+    private void loadStatesFromFile() {
+        Path path = Paths.get(STATE_FILE);
+        if (Files.exists(path)) {
+            try (InputStream input = Files.newInputStream(path)) {
+                states.load(input);
+            } catch (IOException e) {
+                System.err.println("Error loading window states: " + e.getMessage());
             }
+        }
+    }
+
+    private void saveStatesToFile() {
+        try (OutputStream output = Files.newOutputStream(Paths.get(STATE_FILE))) {
+            states.store(output, "Window states");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error saving window states: " + e.getMessage());
         }
     }
 }
