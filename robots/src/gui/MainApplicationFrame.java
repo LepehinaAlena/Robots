@@ -5,10 +5,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import log.Logger;
 
 public class MainApplicationFrame extends JFrame {
     private final JDesktopPane desktopPane = new JDesktopPane();
+    private final Map<JInternalFrame, WindowStateAdapter> windowAdapters = new HashMap<>();
+    private final WindowStateManager windowStateManager = new WindowStateManager();
 
     public MainApplicationFrame() {
         int inset = 50;
@@ -17,12 +22,7 @@ public class MainApplicationFrame extends JFrame {
 
         setContentPane(desktopPane);
 
-        LogWindow logWindow = createLogWindow();
-        addWindow(logWindow);
-
-        GameWindow gameWindow = new GameWindow();
-        gameWindow.setSize(400, 400);
-        addWindow(gameWindow);
+        createAndAddWindows();
 
         setJMenuBar(CreateMenuBar.createMenuBar(this));
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -35,19 +35,57 @@ public class MainApplicationFrame extends JFrame {
         });
     }
 
-    protected LogWindow createLogWindow() {
-        LogWindow logWindow = new LogWindow(Logger.getDefaultLogSource());
-        logWindow.setLocation(10, 10);
-        logWindow.setSize(500, 800);
-        setMinimumSize(logWindow.getSize());
-        logWindow.pack();
-        Logger.debug("Протокол работает");
-        return logWindow;
+    private void createAndAddWindows() {
+        createLogWindow();
+        createGameWindow();
     }
 
-    protected void addWindow(JInternalFrame frame) {
+    private void createLogWindow() {
+        LogWindow logWindow = new LogWindow(Logger.getDefaultLogSource());
+
+        logWindow.setBounds(10, 10, 200, 500);
+        logWindow.setVisible(true);
+
+
+        Map<String, String> defaultState = new HashMap<>();
+        defaultState.put("x", "10");
+        defaultState.put("y", "10");
+        defaultState.put("width", "500");
+        defaultState.put("height", "800");
+        defaultState.put("iconified", "false");
+        defaultState.put("visible", "true");
+        Logger.debug("Протокол работает");
+        addWindow(logWindow, "logWindow", defaultState);
+    }
+
+    private void createGameWindow() {
+        GameWindow gameWindow = new GameWindow();
+
+        gameWindow.setBounds(600, 150, 500, 400);
+        gameWindow.setVisible(true);
+
+
+        Map<String, String> defaultState = new HashMap<>();
+        defaultState.put("x", "100");
+        defaultState.put("y", "100");
+        defaultState.put("width", "400");
+        defaultState.put("height", "400");
+        defaultState.put("iconified", "false");
+        defaultState.put("visible", "true");
+        addWindow(gameWindow, "gameWindow", defaultState);
+    }
+
+    private void addWindow(JInternalFrame frame, String windowId, Map<String, String> defaultState) {
+
         desktopPane.add(frame);
+        WindowStateAdapter adapter = new WindowStateAdapter(frame, windowId, defaultState);
+        windowAdapters.put(frame, adapter);
+        windowStateManager.loadWindowState(adapter);
         frame.setVisible(true);
+    }
+
+    private void saveAllWindowStates() {
+        windowAdapters.values().forEach(windowStateManager::saveWindowState);
     }
 
     private void addConfirmExit() {
@@ -63,6 +101,7 @@ public class MainApplicationFrame extends JFrame {
                 options[0]
         );
         if (response == JOptionPane.YES_OPTION) {
+            saveAllWindowStates();
             System.exit(0);
         }
     }
