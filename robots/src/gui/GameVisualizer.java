@@ -15,12 +15,12 @@ import java.util.TimerTask;
 import javax.swing.JPanel;
 
 public class GameVisualizer extends JPanel {
-    private final Timer m_timer = initTimer();
     private final RobotModel robotModel;
 
     public GameVisualizer(RobotModel robotModel) {
         this.robotModel = robotModel;
 
+        Timer m_timer = initTimer();
         m_timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -62,16 +62,22 @@ public class GameVisualizer extends JPanel {
             return;
         }
 
-        double angleToTarget = RobotModel.angleTo(
-                robotModel.getRobotPositionX(), robotModel.getRobotPositionY(),
-                robotModel.getTargetPositionX(), robotModel.getTargetPositionY());
+        double angleToTarget = RobotModel.angleTo(robotModel.m_robotPositionX, robotModel.m_robotPositionY, robotModel.m_targetPositionX, robotModel.m_targetPositionY);
+        angleToTarget -= robotModel.m_robotDirection;
+        angleToTarget = angleToTarget * 180 / Math.PI;
+        if (Math.abs(angleToTarget) > 180) {
+            angleToTarget -= 360;
+        }
 
         double angularVelocity = 0;
-        if (angleToTarget > robotModel.getRobotDirection()) {
+        if (angleToTarget > 0) {
             angularVelocity = RobotModel.maxAngularVelocity;
         }
-        if (angleToTarget < robotModel.getRobotDirection()) {
+        if (angleToTarget < 0) {
             angularVelocity = -RobotModel.maxAngularVelocity;
+        }
+        if (Math.abs(angleToTarget) > 90) {
+            angularVelocity = RobotModel.maxAngularVelocity;
         }
 
         robotModel.moveRobot(RobotModel.maxVelocity, angularVelocity, 10);

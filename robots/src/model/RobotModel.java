@@ -3,12 +3,12 @@ package model;
 import java.util.Observable;
 
 public class RobotModel extends Observable {
-    private volatile double m_robotPositionX = 100;
-    private volatile double m_robotPositionY = 100;
-    private volatile double m_robotDirection = 0;
+    public volatile double m_robotPositionX = 100;
+    public volatile double m_robotPositionY = 100;
+    public volatile double m_robotDirection = 0;
 
-    private volatile int m_targetPositionX = 150;
-    private volatile int m_targetPositionY = 100;
+    public volatile int m_targetPositionX = 150;
+    public volatile int m_targetPositionY = 100;
 
     public static final double maxVelocity = 0.1;
     public static final double maxAngularVelocity = 0.001;
