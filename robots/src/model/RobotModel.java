@@ -48,6 +48,35 @@ public class RobotModel extends Observable {
         notifyObservers();
     }
 
+    public void onModelUpdateEvent() {
+        double distance = RobotModel.distance(
+                getTargetPositionX(), getTargetPositionY(),
+                getRobotPositionX(), getRobotPositionY());
+
+        if (distance < 0.5) {
+            return;
+        }
+        double angleToTarget = RobotModel.angleTo(m_robotPositionX, m_robotPositionY, m_targetPositionX, m_targetPositionY);
+        angleToTarget -= m_robotDirection;
+        angleToTarget = angleToTarget * 180 / Math.PI;
+        if (Math.abs(angleToTarget) > 180) {
+            angleToTarget -= 360;
+        }
+
+        double angularVelocity = 0;
+        if (angleToTarget > 0) {
+            angularVelocity = RobotModel.maxAngularVelocity;
+        }
+        if (angleToTarget < 0) {
+            angularVelocity = -RobotModel.maxAngularVelocity;
+        }
+        if (Math.abs(angleToTarget) > 90) {
+            angularVelocity = RobotModel.maxAngularVelocity;
+        }
+
+        moveRobot(RobotModel.maxVelocity, angularVelocity, 10);
+    }
+
     public void moveRobot(double velocity, double angularVelocity, double duration) {
         velocity = applyLimits(velocity, 0, maxVelocity);
         angularVelocity = applyLimits(angularVelocity, -maxAngularVelocity, maxAngularVelocity);

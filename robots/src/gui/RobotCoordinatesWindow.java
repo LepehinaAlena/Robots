@@ -26,7 +26,6 @@ public class RobotCoordinatesWindow extends JInternalFrame {
         getContentPane().add(panel);
         setSize(250, 100);
 
-        // Таймер для обновления координат (20 раз в секунду)
         updateTimer = new Timer("Coordinates updater", true);
         updateTimer.schedule(new TimerTask() {
             @Override

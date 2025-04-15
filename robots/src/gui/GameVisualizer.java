@@ -31,7 +31,7 @@ public class GameVisualizer extends JPanel {
         m_timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                onModelUpdateEvent();
+                robotModel.onModelUpdateEvent();
             }
         }, 0, 10);
 
@@ -53,34 +53,6 @@ public class GameVisualizer extends JPanel {
         EventQueue.invokeLater(this::repaint);
     }
 
-    protected void onModelUpdateEvent() {
-        double distance = RobotModel.distance(
-                robotModel.getTargetPositionX(), robotModel.getTargetPositionY(),
-                robotModel.getRobotPositionX(), robotModel.getRobotPositionY());
-
-        if (distance < 0.5) {
-            return;
-        }
-        double angleToTarget = RobotModel.angleTo(robotModel.m_robotPositionX, robotModel.m_robotPositionY, robotModel.m_targetPositionX, robotModel.m_targetPositionY);
-        angleToTarget -= robotModel.m_robotDirection;
-        angleToTarget = angleToTarget * 180 / Math.PI;
-        if (Math.abs(angleToTarget) > 180) {
-            angleToTarget -= 360;
-        }
-
-        double angularVelocity = 0;
-        if (angleToTarget > 0) {
-            angularVelocity = RobotModel.maxAngularVelocity;
-        }
-        if (angleToTarget < 0) {
-            angularVelocity = -RobotModel.maxAngularVelocity;
-        }
-        if (Math.abs(angleToTarget) > 90) {
-            angularVelocity = RobotModel.maxAngularVelocity;
-        }
-
-        robotModel.moveRobot(RobotModel.maxVelocity, angularVelocity, 10);
-    }
 
     private static int round(double value) {
         return (int) (value + 0.5);
