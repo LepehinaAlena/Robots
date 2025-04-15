@@ -1,5 +1,7 @@
 package gui;
 
+import model.RobotModel;
+
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -14,6 +16,7 @@ public class MainApplicationFrame extends JFrame {
     private final JDesktopPane desktopPane = new JDesktopPane();
     private final Map<JInternalFrame, WindowStateAdapter> windowAdapters = new HashMap<>();
     private final WindowStateManager windowStateManager = new WindowStateManager();
+    private final RobotModel robotModel = new RobotModel();
 
     public MainApplicationFrame() {
         int inset = 50;
@@ -38,6 +41,7 @@ public class MainApplicationFrame extends JFrame {
     private void createAndAddWindows() {
         createLogWindow();
         createGameWindow();
+        createCoordinatesWindow();
     }
 
     private void createLogWindow() {
@@ -59,7 +63,7 @@ public class MainApplicationFrame extends JFrame {
     }
 
     private void createGameWindow() {
-        GameWindow gameWindow = new GameWindow();
+        GameWindow gameWindow = new GameWindow(robotModel);
 
         gameWindow.setBounds(600, 150, 500, 400);
         gameWindow.setVisible(true);
@@ -73,6 +77,22 @@ public class MainApplicationFrame extends JFrame {
         defaultState.put("iconified", "false");
         defaultState.put("visible", "true");
         addWindow(gameWindow, "gameWindow", defaultState);
+    }
+
+    private void createCoordinatesWindow() {
+        RobotCoordinatesWindow coordinatesWindow = new RobotCoordinatesWindow(robotModel);
+
+        coordinatesWindow.setBounds(300, 10, 300, 100);
+        coordinatesWindow.setVisible(true);
+
+        Map<String, String> defaultState = new HashMap<>();
+        defaultState.put("x", "300");
+        defaultState.put("y", "10");
+        defaultState.put("width", "300");
+        defaultState.put("height", "100");
+        defaultState.put("iconified", "false");
+        defaultState.put("visible", "true");
+        addWindow(coordinatesWindow, "coordinatesWindow", defaultState);
     }
 
     private void addWindow(JInternalFrame frame, String windowId, Map<String, String> defaultState) {
