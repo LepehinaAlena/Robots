@@ -40,7 +40,7 @@ public class RobotModel extends Observable {
         notifyObservers();
     }
 
-    public void updateRobotPosition(double x, double y, double direction) {
+    private void updateRobotPosition(double x, double y, double direction) {
         m_robotPositionX = x;
         m_robotPositionY = y;
         m_robotDirection = direction;
@@ -77,7 +77,7 @@ public class RobotModel extends Observable {
         moveRobot(RobotModel.maxVelocity, angularVelocity, 10);
     }
 
-    public void moveRobot(double velocity, double angularVelocity, double duration) {
+    private void moveRobot(double velocity, double angularVelocity, double duration) {
         velocity = applyLimits(velocity, 0, maxVelocity);
         angularVelocity = applyLimits(angularVelocity, -maxAngularVelocity, maxAngularVelocity);
 
@@ -111,7 +111,7 @@ public class RobotModel extends Observable {
         return angle;
     }
 
-    public static double distance(double x1, double y1, double x2, double y2) {
+    private static double distance(double x1, double y1, double x2, double y2) {
         double diffX = x1 - x2;
         double diffY = y1 - y2;
         return Math.sqrt(diffX * diffX + diffY * diffY);

@@ -82,7 +82,7 @@ public class MainApplicationFrame extends JFrame {
     private void createCoordinatesWindow() {
         RobotCoordinatesWindow coordinatesWindow = new RobotCoordinatesWindow(robotModel);
 
-        coordinatesWindow.setBounds(300, 10, 300, 100);
+        coordinatesWindow.setBounds(300, 10, 250, 100);
         coordinatesWindow.setVisible(true);
 
         Map<String, String> defaultState = new HashMap<>();

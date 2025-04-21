@@ -24,7 +24,6 @@ public class RobotCoordinatesWindow extends JInternalFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         getContentPane().add(panel);
-        setSize(250, 100);
 
         updateTimer = new Timer("Coordinates updater", true);
         updateTimer.schedule(new TimerTask() {
