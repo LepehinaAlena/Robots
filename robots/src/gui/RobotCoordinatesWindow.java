@@ -1,19 +1,24 @@
 package gui;
 
 import model.RobotModel;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class RobotCoordinatesWindow extends JInternalFrame {
+public class RobotCoordinatesWindow extends JInternalFrame implements Observer {
     private final JLabel coordinatesLabel;
     private final RobotModel robotModel;
+    private RobotModel.RobotState currentRobotState;
     private final Timer updateTimer;
 
     public RobotCoordinatesWindow(RobotModel robotModel) {
         super("Координаты робота", true, true, true, true);
         this.robotModel = robotModel;
+        robotModel.addObserver(this);
 
         coordinatesLabel = new JLabel();
         coordinatesLabel.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -34,19 +39,28 @@ public class RobotCoordinatesWindow extends JInternalFrame {
         }, 0, 50);
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof RobotModel.RobotState) {
+            currentRobotState = (RobotModel.RobotState) arg;
+        }
+    }
+
     private void updateCoordinates() {
+        if (currentRobotState == null) return;
+
         SwingUtilities.invokeLater(() -> {
             coordinatesLabel.setText(String.format(
-                    "<html>X: %.2f<br>Y: %.2f<br>Angle: %.2f°</html>",
-                    robotModel.getRobotPositionX(),
-                    robotModel.getRobotPositionY(),
-                    Math.toDegrees(robotModel.getRobotDirection())));
+                    "<html>X: %.2f<br>Y: %.2f<br>Угол: %.2f°</html>",
+                    currentRobotState.x,
+                    currentRobotState.y,
+                    Math.toDegrees(currentRobotState.direction)));
         });
     }
 
     @Override
     public void dispose() {
-        updateTimer.cancel();
+        robotModel.deleteObserver(this);
         super.dispose();
     }
 }

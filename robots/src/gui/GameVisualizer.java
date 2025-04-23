@@ -10,28 +10,27 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JPanel;
 
-public class GameVisualizer extends JPanel {
-    private final Timer m_timer = initTimer();
+public class GameVisualizer extends JPanel implements Observer {
+    private final Timer m_timer = new Timer("events generator", true);
     private final RobotModel robotModel;
+    private RobotModel.RobotState currentRobotState;
+    private RobotModel.TargetState currentTargetState;
 
     public GameVisualizer(RobotModel robotModel) {
         this.robotModel = robotModel;
+        robotModel.addObserver(this);
+        robotModel.initModel();
 
         m_timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 onRedrawEvent();
-            }
-        }, 0, 50);
-
-        m_timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                robotModel.onModelUpdateEvent();
             }
         }, 0, 10);
 
@@ -39,7 +38,6 @@ public class GameVisualizer extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setTargetPosition(e.getPoint());
-                repaint();
             }
         });
         setDoubleBuffered(true);
@@ -53,22 +51,35 @@ public class GameVisualizer extends JPanel {
         EventQueue.invokeLater(this::repaint);
     }
 
-
     private static int round(double value) {
         return (int) (value + 0.5);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof RobotModel.RobotState) {
+            currentRobotState = (RobotModel.RobotState) arg;
+        } else if (arg instanceof RobotModel.TargetState) {
+            currentTargetState = (RobotModel.TargetState) arg;
+        }
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
+
+        if (currentRobotState == null || currentTargetState == null) {
+            return;
+        }
+
         drawRobot(g2d,
-                round(robotModel.getRobotPositionX()),
-                round(robotModel.getRobotPositionY()),
-                robotModel.getRobotDirection());
+                round(currentRobotState.x),
+                round(currentRobotState.y),
+                currentRobotState.direction);
         drawTarget(g2d,
-                robotModel.getTargetPositionX(),
-                robotModel.getTargetPositionY());
+                currentTargetState.x,
+                currentTargetState.y);
     }
 
     private static void fillOval(Graphics g, int centerX, int centerY, int diam1, int diam2) {
@@ -99,9 +110,5 @@ public class GameVisualizer extends JPanel {
         fillOval(g, x, y, 5, 5);
         g.setColor(Color.BLACK);
         drawOval(g, x, y, 5, 5);
-    }
-
-    private static Timer initTimer() {
-        return new Timer("events generator", true);
     }
 }

@@ -1,57 +1,66 @@
 package model;
 
 import java.util.Observable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RobotModel extends Observable {
-    public volatile double m_robotPositionX = 100;
-    public volatile double m_robotPositionY = 100;
-    public volatile double m_robotDirection = 0;
 
-    public volatile int m_targetPositionX = 150;
-    public volatile int m_targetPositionY = 100;
+    public volatile double m_robotPositionX;
+    public volatile double m_robotPositionY;
+    public volatile double m_robotDirection;
+
+    public volatile int m_targetPositionX;
+    public volatile int m_targetPositionY;
+
+    private final Timer modelUpdateTimer = new Timer("Model update timer", true);
 
     public static final double maxVelocity = 0.1;
     public static final double maxAngularVelocity = 0.001;
 
-    public double getRobotPositionX() {
-        return m_robotPositionX;
+    public RobotModel() {
+        m_robotPositionX = 100;
+        m_robotPositionY = 100;
+        m_robotDirection = 0;
+
+        m_targetPositionX = 150;
+        m_targetPositionY = 100;
+
+        modelUpdateTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                onModelUpdateEvent();
+            }
+        }, 0, 10);
     }
 
-    public double getRobotPositionY() {
-        return m_robotPositionY;
-    }
-
-    public double getRobotDirection() {
-        return m_robotDirection;
-    }
-
-    public int getTargetPositionX() {
-        return m_targetPositionX;
-    }
-
-    public int getTargetPositionY() {
-        return m_targetPositionY;
+    public void initModel() {
+        notifyStateChanged(new RobotState(m_robotPositionX, m_robotPositionY, m_robotDirection));
+        notifyStateChanged(new TargetState(m_targetPositionX, m_targetPositionY));
     }
 
     public void setTargetPosition(int x, int y) {
         m_targetPositionX = x;
         m_targetPositionY = y;
-        setChanged();
-        notifyObservers();
+        notifyStateChanged(new TargetState(x, y));
     }
 
     private void updateRobotPosition(double x, double y, double direction) {
         m_robotPositionX = x;
         m_robotPositionY = y;
         m_robotDirection = direction;
+        notifyStateChanged(new RobotState(x, y, direction));
+    }
+
+    private void notifyStateChanged(Object state) {
         setChanged();
-        notifyObservers();
+        notifyObservers(state);
     }
 
     public void onModelUpdateEvent() {
         double distance = RobotModel.distance(
-                getTargetPositionX(), getTargetPositionY(),
-                getRobotPositionX(), getRobotPositionY());
+                m_targetPositionX, m_targetPositionY,
+                m_robotPositionX, m_robotPositionY);
 
         if (distance < 0.5) {
             return;
@@ -121,5 +130,24 @@ public class RobotModel extends Observable {
         double diffX = toX - fromX;
         double diffY = toY - fromY;
         return asNormalizedRadians(Math.atan2(diffY, diffX));
+    }
+
+    public static class RobotState {
+        public final double x, y, direction;
+
+        public RobotState(double x, double y, double direction) {
+            this.x = x;
+            this.y = y;
+            this.direction = direction;
+        }
+    }
+
+    public static class TargetState {
+        public final int x, y;
+
+        public TargetState(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
