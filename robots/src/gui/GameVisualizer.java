@@ -20,7 +20,6 @@ public class GameVisualizer extends JPanel implements Observer {
     private final Timer m_timer = new Timer("events generator", true);
     private final RobotModel robotModel;
     private RobotModel.RobotState currentRobotState;
-    private RobotModel.TargetState currentTargetState;
 
     public GameVisualizer(RobotModel robotModel) {
         this.robotModel = robotModel;
@@ -57,11 +56,7 @@ public class GameVisualizer extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof RobotModel.RobotState) {
-            currentRobotState = (RobotModel.RobotState) arg;
-        } else if (arg instanceof RobotModel.TargetState) {
-            currentTargetState = (RobotModel.TargetState) arg;
-        }
+        currentRobotState = (RobotModel.RobotState) arg;
     }
 
     @Override
@@ -69,7 +64,7 @@ public class GameVisualizer extends JPanel implements Observer {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        if (currentRobotState == null || currentTargetState == null) {
+        if (currentRobotState == null) {
             return;
         }
 
@@ -78,8 +73,8 @@ public class GameVisualizer extends JPanel implements Observer {
                 round(currentRobotState.y),
                 currentRobotState.direction);
         drawTarget(g2d,
-                currentTargetState.x,
-                currentTargetState.y);
+                (int) currentRobotState.tx,
+                (int) currentRobotState.ty);
     }
 
     private static void fillOval(Graphics g, int centerX, int centerY, int diam1, int diam2) {

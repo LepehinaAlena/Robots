@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="доп мелкие изменения">
+    <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robots/src/gui/GameVisualizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/GameVisualizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robots/src/gui/RobotCoordinatesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/RobotCoordinatesWindow.java" afterDir="false" />
@@ -70,7 +70,7 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#10 on third__task",
+    "git-widget-placeholder": "third__task",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/RBT/Desktop/Robots",
     "project.structure.last.edited": "Modules",
@@ -247,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745247314982</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow">
+      <option name="closed" value="true" />
+      <created>1745412564148</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1745412564148</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,6 +274,7 @@
     <MESSAGE value="Добавление окна с координатами и разделение модели бота от визуализатора" />
     <MESSAGE value="исправление угла движения" />
     <MESSAGE value="доп мелкие изменения" />
-    <option name="LAST_COMMIT_MESSAGE" value="доп мелкие изменения" />
+    <MESSAGE value="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow" />
   </component>
 </project>

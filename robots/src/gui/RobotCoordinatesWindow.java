@@ -41,9 +41,7 @@ public class RobotCoordinatesWindow extends JInternalFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof RobotModel.RobotState) {
-            currentRobotState = (RobotModel.RobotState) arg;
-        }
+        currentRobotState = (RobotModel.RobotState) arg;
     }
 
     private void updateCoordinates() {

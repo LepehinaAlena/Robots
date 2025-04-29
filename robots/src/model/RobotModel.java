@@ -35,26 +35,26 @@ public class RobotModel extends Observable {
     }
 
     public void initModel() {
-        notifyStateChanged(new RobotState(m_robotPositionX, m_robotPositionY, m_robotDirection));
-        notifyStateChanged(new TargetState(m_targetPositionX, m_targetPositionY));
+        setChanged();
+        notifyObservers(new RobotState(m_robotPositionX, m_robotPositionY, m_robotDirection,
+                m_targetPositionX, m_targetPositionY));
     }
 
     public void setTargetPosition(int x, int y) {
         m_targetPositionX = x;
         m_targetPositionY = y;
-        notifyStateChanged(new TargetState(x, y));
+        setChanged();
+        notifyObservers(new RobotState(m_robotPositionX, m_robotPositionY, m_robotDirection,
+                m_targetPositionX, m_targetPositionY));
     }
 
     private void updateRobotPosition(double x, double y, double direction) {
         m_robotPositionX = x;
         m_robotPositionY = y;
         m_robotDirection = direction;
-        notifyStateChanged(new RobotState(x, y, direction));
-    }
-
-    private void notifyStateChanged(Object state) {
         setChanged();
-        notifyObservers(state);
+        notifyObservers(new RobotState(m_robotPositionX, m_robotPositionY, m_robotDirection,
+                m_targetPositionX, m_targetPositionY));
     }
 
     public void onModelUpdateEvent() {
@@ -133,21 +133,14 @@ public class RobotModel extends Observable {
     }
 
     public static class RobotState {
-        public final double x, y, direction;
+        public final double x, y, direction, tx, ty;
 
-        public RobotState(double x, double y, double direction) {
+        public RobotState(double x, double y, double direction, double tx, double ty) {
             this.x = x;
             this.y = y;
             this.direction = direction;
-        }
-    }
-
-    public static class TargetState {
-        public final int x, y;
-
-        public TargetState(int x, int y) {
-            this.x = x;
-            this.y = y;
+            this.tx = tx;
+            this.ty = ty;
         }
     }
 }
