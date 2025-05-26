@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/robots/src/gui/StatefulWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_03_2025_19_14_[Changes]1/MainApplicationFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_03_2025_19_14_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_03_2025_19_14__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robots/src/gui/WindowStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/GameVisualizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/GameVisualizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/RobotCoordinatesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/RobotCoordinatesWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/model/RobotModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/model/RobotModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +30,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="second_task" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +70,7 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#7 on second__task",
+    "git-widget-placeholder": "third__task",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/RBT/Desktop/Robots",
     "project.structure.last.edited": "Modules",
@@ -89,7 +85,7 @@
       <module name="Robots" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gui.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,10 +127,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.RobotsProgram" />
-        <item itemvalue="JUnit.MainApplicationFrameTest" />
-        <item itemvalue="JUnit.MainApplicationFrameTest.testConfirmExit" />
         <item itemvalue="JUnit.MainApplicationFrameTest.testConfirmExit" />
         <item itemvalue="JUnit.MainApplicationFrameTest" />
+        <item itemvalue="Application.RobotsProgram" />
+        <item itemvalue="JUnit.MainApplicationFrameTest.testConfirmExit" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +207,55 @@
       <option name="project" value="LOCAL" />
       <updated>1742053686611</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Добавление окна с координатами и разделение модели бота от визуализатора">
+      <option name="closed" value="true" />
+      <created>1744560417942</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744560417942</updated>
+    </task>
+    <task id="LOCAL-00010" summary="исправление угла движения">
+      <option name="closed" value="true" />
+      <created>1744696975074</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744696975074</updated>
+    </task>
+    <task id="LOCAL-00011" summary="исправление угла движения">
+      <option name="closed" value="true" />
+      <created>1744697226001</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744697226001</updated>
+    </task>
+    <task id="LOCAL-00012" summary="исправление угла движения">
+      <option name="closed" value="true" />
+      <created>1744699508929</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744699508929</updated>
+    </task>
+    <task id="LOCAL-00013" summary="доп мелкие изменения">
+      <option name="closed" value="true" />
+      <created>1745247314982</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1745247314982</updated>
+    </task>
+    <task id="LOCAL-00014" summary="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow">
+      <option name="closed" value="true" />
+      <created>1745412564148</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1745412564148</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,6 +271,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Добавление окна с координатами и разделение модели бота от визуализатора" />
+    <MESSAGE value="исправление угла движения" />
+    <MESSAGE value="доп мелкие изменения" />
+    <MESSAGE value="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow" />
   </component>
 </project>
