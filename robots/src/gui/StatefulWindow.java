@@ -7,5 +7,4 @@ public interface StatefulWindow {
     Map<String, String> getWindowState();
     void setWindowState(Map<String, String> state);
     boolean isWindowVisible();
-    void setWindowVisible(boolean visible);
 }

@@ -49,5 +49,4 @@ public class WindowStateAdapter implements StatefulWindow {
     }
 
     @Override public boolean isWindowVisible() { return frame.isVisible(); }
-    @Override public void setWindowVisible(boolean visible) { frame.setVisible(visible); }
 }

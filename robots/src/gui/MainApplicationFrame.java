@@ -37,7 +37,19 @@ public class MainApplicationFrame extends JFrame {
             }
         });
     }
+    public void updateLocalization() {
+        setJMenuBar(CreateMenuBar.createMenuBar(this));
 
+        for (JInternalFrame frame : desktopPane.getAllFrames()) {
+            if (frame instanceof LocalizableWindow) {
+                ((LocalizableWindow)frame).updateLocalization();
+            }
+        }
+
+        SwingUtilities.updateComponentTreeUI(this);
+        revalidate();
+        repaint();
+    }
     private void createAndAddWindows() {
         createLogWindow();
         createGameWindow();
@@ -109,11 +121,16 @@ public class MainApplicationFrame extends JFrame {
     }
 
     private void addConfirmExit() {
-        Object[] options = {"Да", "Нет"};
+        String title = LocalizationManager.getString("exitDialog.title");
+        String message = LocalizationManager.getString("exitDialog.message");
+        String yesOption = LocalizationManager.getString("exitDialog.yesOption");
+        String noOption = LocalizationManager.getString("exitDialog.noOption");
+
+        Object[] options = {yesOption, noOption};
         int response = JOptionPane.showOptionDialog(
                 null,
-                "Вы подтверждаете выход?",
-                "Подтверждение выхода",
+                message,
+                title,
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -125,6 +142,7 @@ public class MainApplicationFrame extends JFrame {
             System.exit(0);
         }
     }
+
 
     public void setLookAndFeel(String className) {
         try {
