@@ -9,14 +9,14 @@ import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class RobotCoordinatesWindow extends JInternalFrame implements Observer {
+public class RobotCoordinatesWindow extends JInternalFrame implements Observer, LocalizableWindow {
     private final JLabel coordinatesLabel;
     private final RobotModel robotModel;
     private RobotModel.RobotState currentRobotState;
     private final Timer updateTimer;
 
     public RobotCoordinatesWindow(RobotModel robotModel) {
-        super("Координаты робота", true, true, true, true);
+        super(LocalizationManager.getString("coordinatesWindow.title"), true, true, true, true);
         this.robotModel = robotModel;
         robotModel.addObserver(this);
 
@@ -49,7 +49,7 @@ public class RobotCoordinatesWindow extends JInternalFrame implements Observer {
 
         SwingUtilities.invokeLater(() -> {
             coordinatesLabel.setText(String.format(
-                    "<html>X: %.2f<br>Y: %.2f<br>Угол: %.2f°</html>",
+                    "<html>X: %.2f<br>Y: %.2f<br>Angle: %.2f°</html>",
                     currentRobotState.x,
                     currentRobotState.y,
                     Math.toDegrees(currentRobotState.direction)));
@@ -60,5 +60,10 @@ public class RobotCoordinatesWindow extends JInternalFrame implements Observer {
     public void dispose() {
         robotModel.deleteObserver(this);
         super.dispose();
+    }
+
+    @Override
+    public void updateLocalization() {
+        setTitle(LocalizationManager.getString("coordinatesWindow.title"));
     }
 }

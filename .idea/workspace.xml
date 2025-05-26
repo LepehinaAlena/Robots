@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ffd12e7-7ed1-49a2-8b85-468a295cb9e5" name="Changes" comment="справлено использование и наследование Observer в GameWindow и RobotCoordinatesWindow">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robots/src/gui/GameVisualizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/GameVisualizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/resources/messages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/resources/messages_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/resources/messages_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/resources/messages_translit.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/src/gui/LocalizableWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robots/src/gui/LocalizationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/LogWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/LogWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/MainApplicationFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robots/src/gui/RobotCoordinatesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/RobotCoordinatesWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robots/src/model/RobotModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/model/RobotModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/StatefulWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/StatefulWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robots/src/gui/WindowStateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/robots/src/gui/WindowStateAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +37,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="second_task" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,7 +77,7 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "third__task",
+    "git-widget-placeholder": "localization",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/RBT/Desktop/Robots",
     "project.structure.last.edited": "Modules",
